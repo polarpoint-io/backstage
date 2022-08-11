@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-web
+  description: Backstage Frontend
+  annotations:
+    github.com/project-slug: polarpoint-io/backstage
+    backstage.io/kubernetes-id: backstage
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: backstage
+    sonarqube.org/project-key: backstage
+    grafana/tag-selector: "kubernetes"
+    prometheus.io/rule: 'sum by (backstage)(changes(kube_pod_status_ready{condition="true"}[5m]))'
+    prometheus.io/alert: all
+  tags:
+    - web
+    - frontend
+    - backstage
+  links:
+    - url: https://developer.polarpoint.io
+      title: Backstage
+      icon: cloud
+spec:
+  type: service
+  lifecycle: production
+  owner: group:platform-team
+  system: backstage
+  apiConsumedBy: ['system:backstage']
+  dependsOn: ['resource:backstage-db', 'resource:backstage-bucket']
+  providesApis:
+    - backstage
