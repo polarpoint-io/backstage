@@ -119,11 +119,10 @@ proxy:
 
 
 sonarQube:
-  baseUrl: https://sonar.diegoluisi.eti.br
+  baseUrl: https://code-analysis.polarpoint.io
 
 grafana:
-  # Publicly accessible domain
-  domain: https://grafana.diegoluisi.eti.br
+  domain: https://dashboard.polarpoint.io
 
 # auth:
 #   # see https://backstage.io/docs/auth/ to learn about auth providers
@@ -167,8 +166,8 @@ catalog:
         - Location
 
   locations:
-    # Backstage example components
+    # Backstage components
     - type: url
-      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/polarpoint/all.yaml
+      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/all.yaml
 
 
