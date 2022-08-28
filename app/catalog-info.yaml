@@ -1,13 +1,31 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: app
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  name: backstage-web
+  description: Backstage Frontend
+  annotations:
+    github.com/project-slug: polarpoint.io/backstage
+    backstage.io/kubernetes-id: backstage
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: prd-backstage
+    sonarqube.org/project-key: backstage
+    grafana/tag-selector: "kubernetes"
+    prometheus.io/rule: 'sum by (backstage)(changes(kube_pod_status_ready{condition="true"}[5m]))'
+    prometheus.io/alert: all
+  tags:
+    - web
+    - frontend
+    - backstage
+  links:
+    - url: https://developer.polarpoint.io
+      title: Backstage
+      icon: cloud
 spec:
-  type: website
-  owner: john@example.com
-  lifecycle: experimental
+  type: service
+  lifecycle: production
+  owner: group:sre-team
+  system: backstage
+  apiConsumedBy: ['system:backstage']
+  dependsOn: ['resource:backstage-db', 'resource:backstage-bucket']
+  providesApis:
+    - backstage

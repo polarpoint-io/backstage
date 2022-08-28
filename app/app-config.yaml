@@ -1,5 +1,5 @@
 app:
-  title: Polarpoint Developer Portal
+  title: Scaffolded Backstage App
   baseUrl: http://localhost:3000
 
   support:
@@ -144,7 +144,7 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
   defaultAuthor:
     name: ':robot: [backstage-bot]'
-    email: backstage@polarpoint-io
+    email: mail@polarpoint.io
   # defaultCommitMessage: "🤖 U can't touch this" # Defaults to 'Initial commit'
 
 # Force Deploy
@@ -166,8 +166,8 @@ catalog:
         - Location
 
   locations:
-    # Backstage components
+    # Backstage example components
     - type: url
-      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/all.yaml
+      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/polarpoint-io/all.yaml
 
 

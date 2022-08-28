@@ -1,5 +1,5 @@
 app:
-  title: Polarpoint.io
+  title: polarpoint
   baseUrl: https://developer.polarpoint.io
 
 backend:
