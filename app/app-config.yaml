@@ -173,6 +173,5 @@ catalog:
     # Backstage components
     - type: url
       target: https://github.com/polarpoint-io/backstage-catalog/blob/main/all.yaml
-      https://raw.githubusercontent.com/polarpoint-io/backstage-catalog/main/all.yaml
 
 
