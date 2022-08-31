@@ -66,7 +66,7 @@ kubernetes:
     - type: config
       clusters:
         - url: ${K8S_URL}
-          name: development
+          name: tooling
           authProvider: serviceAccount
           skipTLSVerify: true
           skipMetricsLookup: true
@@ -170,8 +170,9 @@ catalog:
         - Location
 
   locations:
-    # Backstage example components
+    # Backstage components
     - type: url
-      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/polarpoint-io/all.yaml
+      target: https://github.com/polarpoint-io/backstage-catalog/blob/main/all.yaml
+      https://raw.githubusercontent.com/polarpoint-io/backstage-catalog/main/all.yaml
 
 
