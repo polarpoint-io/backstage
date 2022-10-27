@@ -2110,7 +2110,7 @@
     yaml "^2.0.0"
     zen-observable "^0.8.15"
 
-"@backstage/plugin-catalog@^1.5.1", "@backstage/plugin-catalog@^1.6.0":
+"@backstage/plugin-catalog@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog/-/plugin-catalog-1.6.0.tgz#f83b0f299b1a3f7d3abf59eede0ddd45d282f61f"
   integrity sha512-npE90K8N1D9ni3i8jC8hTsoutmJsZEDWJCPDp7ZLX0fW+a504uZNZ7LU3oQkQlTTJKlGKkJ6ieEJ+M4KEhUrjA==
@@ -2212,7 +2212,7 @@
     "@backstage/catalog-model" "^1.1.2"
     "@kubernetes/client-node" "^0.17.0"
 
-"@backstage/plugin-kubernetes@^0.7.2", "@backstage/plugin-kubernetes@^0.7.3":
+"@backstage/plugin-kubernetes@^0.7.3":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-kubernetes/-/plugin-kubernetes-0.7.3.tgz#9418cac7143042b867092f4e1e5dd6a3b8345be8"
   integrity sha512-IV/jV+PcEEkOu+rGDRXh6/L3OpbBm19eAkPY48ltsSLr2aaVp339bg+OHv55Wn37gtIQp50fxHz1wpBLVJrLtw==
@@ -2481,7 +2481,7 @@
     "@backstage/plugin-permission-common" "^0.7.0"
     "@backstage/types" "^1.0.0"
 
-"@backstage/plugin-search-react@^1.1.0", "@backstage/plugin-search-react@^1.2.0":
+"@backstage/plugin-search-react@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-search-react/-/plugin-search-react-1.2.0.tgz#a9c63c94e58b2a2fcc4e242606fc55f00f86a4d1"
   integrity sha512-yXJGvPfCS5MLViBha42PXxFhhKExKYakzamAw6vvGXnkkepzDHw5r08PaSc9jR22aWbzMFFxQjEt+d3cZfDzBw==
@@ -2499,7 +2499,7 @@
     qs "^6.9.4"
     react-use "^17.3.2"
 
-"@backstage/plugin-search@^1.0.2", "@backstage/plugin-search@^1.0.3":
+"@backstage/plugin-search@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-search/-/plugin-search-1.0.3.tgz#6532b46ea272ce56b2b6020224d040d8f21c0ee6"
   integrity sha512-sZoBkz1tTGaBnbELULEDMFcGm0LFmo58ELo7mMXAqyRs788vGMX0+gHaA46CiuQPPBmu/RJHVD2vAaKgD+8A5w==
@@ -6165,7 +6165,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
   version "17.0.18"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
   integrity sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==
@@ -6934,18 +6934,19 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/core-plugin-api" "^1.0.6"
     "@backstage/integration-react" "^1.1.4"
     "@backstage/plugin-api-docs" "^0.8.9"
-    "@backstage/plugin-catalog" "^1.5.1"
+    "@backstage/plugin-catalog" "^1.6.0"
+    "@backstage/plugin-catalog-backend-module-ldap" "^0.5.4"
     "@backstage/plugin-catalog-common" "^1.0.6"
     "@backstage/plugin-catalog-graph" "^0.2.21"
     "@backstage/plugin-catalog-import" "^0.9.0"
     "@backstage/plugin-catalog-react" "^1.1.4"
     "@backstage/plugin-github-actions" "^0.5.9"
-    "@backstage/plugin-kubernetes" "^0.7.2"
+    "@backstage/plugin-kubernetes" "^0.7.3"
     "@backstage/plugin-org" "^0.5.9"
     "@backstage/plugin-permission-react" "^0.4.5"
     "@backstage/plugin-scaffolder" "^1.6.0"
-    "@backstage/plugin-search" "^1.0.2"
-    "@backstage/plugin-search-react" "^1.1.0"
+    "@backstage/plugin-search" "^1.0.3"
+    "@backstage/plugin-search-react" "^1.2.0"
     "@backstage/plugin-sonarqube" "^0.4.1"
     "@backstage/plugin-tech-radar" "^0.5.16"
     "@backstage/plugin-techdocs" "^1.3.2"
@@ -13219,9 +13220,9 @@ joi@^17.4.0:
     "@sideway/pinpoint" "^2.0.0"
 
 jose@^4.1.4, jose@^4.6.0:
-  version "4.8.3"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.8.3.tgz#5a754fb4aa5f2806608d083f438e6916b11087da"
-  integrity sha512-7rySkpW78d8LBp4YU70Wb7+OTgE3OwAALNVZxhoIhp4Kscp+p/fBkdpxGAMKxvCAMV4QfXBU9m6l9nX/vGwd2g==
+  version "4.10.3"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.10.3.tgz#36ffeae395f14624a99961db6ada957476eccb19"
+  integrity sha512-3S4wQnaoJKSAx9uHSoyf8B/lxjs1qCntHWL6wNFszJazo+FtWe+qD0zVfY0BlqJ5HHK4jcnM98k3BQzVLbzE4g==
 
 joycon@^3.0.1:
   version "3.1.1"
