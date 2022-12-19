@@ -17,7 +17,7 @@ metadata:
     - frontend
     - backstage
   links:
-    - url: https://developer.polarpoint.io
+    - url: https://platform.polarpoint.io
       title: Backstage
       icon: cloud
 spec:
