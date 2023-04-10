@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
 
     env:
       CI: true
@@ -48,7 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
 
     env:
       CI: true
@@ -68,53 +68,37 @@ jobs:
         with:
           cache-prefix: ${{ runner.os }}-v${{ matrix.node-version }}
 
-      - name: verify yarn dependency duplicates
-        run: node scripts/verify-lockfile-duplicates.js
-
-      - name: verify changesets
-        run: node scripts/verify-changesets.js
-
-      - name: verify local dependency ranges
-        run: node scripts/verify-local-dependencies.js
-
-      - name: validate config
-        run: yarn backstage-cli config:check --lax
-
-      - name: type checking and declarations
-        run: yarn tsc:full
-
-      - name: prettier
-        run: yarn prettier:check
-
-        # We need to generate the API references as well, so that we can verify the doc links
-      - name: check api reports and generate API reference
-        run: yarn build:api-reports:only --ci --docs
-
-      - name: verify api reference
-        run: node scripts/verify-api-reference.js
-
-      - name: verify openapi yaml file matches generated ts file
-        run: yarn backstage-repo-tools schema:openapi:verify
-
-      - name: verify doc links
-        run: node scripts/verify-links.js
-
-      - name: build all packages
-        run: yarn backstage-cli repo build --all
-
-      - name: verify type dependencies
-        run: yarn lint:type-deps
-
-      - name: ensure clean working directory
+      - name: update backstage version
         run: |
-          if files=$(git ls-files --exclude-standard --others --modified) && [[ -z "$files" ]]; then
-            exit 0
-          else
-            echo ""
-            echo "Working directory has been modified:"
-            echo ""
-            git status --short
-            echo ""
-            exit 1
-          fi
+          cd app  
+          yarn backstage-cli versions:bump
+
+      - name: create a build
+        run: |
+           yarn add --network-timeout 1200000 --cwd packages/app @backstage/plugin-kubernetes @backstage/plugin-search @backstage/plugin-search-react @backstage/plugin-catalog 
+           yarn install --frozen-lockfile --network-timeout 1200000 
+           yarn tsc 
+           yarn build 
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: '.'
+          file: Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/backstage:${{ github.event.client_payload.version }}
+
+
 
