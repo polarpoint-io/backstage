@@ -40,7 +40,7 @@ jobs:
           
       - name: backstage-cli install
         run: |
-          npm i @backstage/cli   
+          yarn add @backstage/cli  
 
       - name: update backstage version
         run: |
