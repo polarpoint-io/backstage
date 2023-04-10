@@ -40,7 +40,6 @@ jobs:
           
       - name: backstage-cli install
         run: |
-          cd app
           npm i @backstage/cli   
 
       - name: update backstage version
