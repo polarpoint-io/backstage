@@ -38,15 +38,19 @@ jobs:
         with:
           cache-prefix: ${{ runner.os }}-v${{ matrix.node-version }}
           
+      - name: yarn backstage-cli install
+        run: |
+          cd app
+          yarn add @backstage/cli      
 
       - name: update backstage version
         run: |
           cd app
-          yarn add @backstage/cli
           yarn backstage-cli versions:bump
 
       - name: create a build
         run: |
+           cd app 
            yarn add --network-timeout 1200000 --cwd packages/app @backstage/plugin-kubernetes @backstage/plugin-search @backstage/plugin-search-react @backstage/plugin-catalog 
            yarn install --frozen-lockfile --network-timeout 1200000 
            yarn tsc 
