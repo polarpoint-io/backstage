@@ -1,3 +1,10 @@
-# Backstage - Developer Portal
+# [Backstage](https://backstage.io)
 
-## Getting started
+This is your newly scaffolded Backstage App, Good Luck!
+
+To start the app, run:
+
+```sh
+yarn install
+yarn start
+```
