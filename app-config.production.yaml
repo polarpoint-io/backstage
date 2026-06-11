@@ -35,6 +35,7 @@ integrations:
 auth:
   environment: production
   providers:
+    guest: null
     github:
       production:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
