@@ -15,7 +15,7 @@ jobs:
         with: {node-version: 22}
       - run: corepack enable && yarn install --immutable
       - run: yarn tsc
-      - run: yarn build:backend
+      - run: yarn build:backend --config ../../app-config.yaml --config ../../app-config.production.yaml
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io

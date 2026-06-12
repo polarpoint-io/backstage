@@ -79,8 +79,8 @@ techdocs:
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers:
-    # github auth (see app-config.production.yaml for the production envs)
+  providers: {}
+    # providers are configured per-environment in app-config.production.yaml
   # see https://backstage.io/docs/ai/mcp-actions#client-id-metadata-documents
   # to learn more about client id metadata documents
   experimentalClientIdMetadataDocuments:
