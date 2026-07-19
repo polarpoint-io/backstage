@@ -45,6 +45,24 @@ auth:
             - resolver: usernameMatchingUserEntityName
               dangerouslyAllowSignInWithoutUserInCatalog: true
 
+permission:
+  rbac:
+    admin:
+      superUsers:
+        - name: user:default/bainss
+    defaultPermissions:
+      defaultRole: role:default/authenticated-read
+      basicPermissions:
+        - permission: catalog.entity.read
+          action: read
+        - permission: catalog-entity
+          action: read
+    pluginsWithPermission:
+      - catalog
+      - scaffolder
+      - permission
+      - kubernetes
+
 kubernetes:
   serviceLocatorMethod:
     type: multiTenant
@@ -57,6 +75,12 @@ kubernetes:
           skipTLSVerify: true
           skipMetricsLookup: true
           serviceAccountToken: ${K8S_TOKEN}
+        - url: ${K8S_CONTROLLER_URL}
+          name: controller
+          authProvider: serviceAccount
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          serviceAccountToken: ${K8S_CONTROLLER_TOKEN}
 
 techdocs:
   builder: 'local'
@@ -89,3 +113,38 @@ catalog:
         schedule:
           frequency: { minutes: 30 }
           timeout: { minutes: 3 }
+
+crossplane:
+  enablePermissions: false
+
+kubernetesIngestor:
+  ingestAPIsAsCRDs: true
+  mappings:
+    namespaceModel: 'cluster'
+    nameModel: 'name-cluster'
+    titleModel: 'name'
+    systemModel: 'namespace'
+    referencesNamespaceModel: 'default'
+  components:
+    enabled: true
+    excludedNamespaces: [kube-public, kube-system, kube-node-lease]
+    taskRunner:
+      frequency: 10
+      timeout: 600
+  crossplane:
+    enabled: true
+    claims:
+      ingestAllClaims: true
+    xrds:
+      enabled: true
+      publishPhase:
+        allowedTargets: ['github.com']
+        target: github
+        git:
+          repoUrl: github.com?owner=polarpoint-io&repo=backstage-software-templates
+          targetBranch: main
+        allowRepoSelection: true
+      taskRunner:
+        frequency: 10
+        timeout: 600
+  argoIntegration: true

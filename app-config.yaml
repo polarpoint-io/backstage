@@ -45,6 +45,9 @@ backend:
       - auth
       - catalog
       - scaffolder
+      - catalog-mcp
+      - scaffolder-mcp
+      - rbac-mcp
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
