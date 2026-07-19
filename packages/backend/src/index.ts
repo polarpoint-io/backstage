@@ -34,6 +34,10 @@ backend.add(import('@backstage/plugin-catalog-backend'));
 backend.add(
   import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
+// Discovers Component/API/etc entities from catalog-info.yaml files across
+// the polarpoint-io GitHub org, see catalog.providers.github in
+// app-config.production.yaml
+backend.add(import('@backstage/plugin-catalog-backend-module-github'));
 
 // See https://backstage.io/docs/features/software-catalog/configuration#subscribing-to-catalog-errors
 backend.add(import('@backstage/plugin-catalog-backend-module-logs'));

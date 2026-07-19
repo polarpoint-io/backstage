@@ -2,12 +2,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  description: Internal developer portal for polarpoint.io — GitHub App auth, GitOps-org catalog discovery, Kubernetes plugin against the tooling cluster.
+  annotations:
+    github.com/project-slug: polarpoint-io/backstage
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: website
-  owner: john@example.com
-  lifecycle: experimental
+  owner: group:sre-team
+  system: backstage
+  lifecycle: production
