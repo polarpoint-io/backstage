@@ -54,6 +54,7 @@
     "@terasky/plugin-scaffolder-mcp-backend": "^0.6.0",
     "app": "link:../app",
     "better-sqlite3": "^12.0.0",
+    "mongodb": "^7.5.0",
     "node-gyp": "^10.0.0",
     "pg": "^8.11.3"
   },
